@@ -30,8 +30,8 @@
             border-radius: 4px;
             padding: 6px;
         }
-        #template { flex: 1; min-height: 120px; }
-        #result { height: 80px; background: #f9f9f9; }
+        #template { flex: 2; min-height: 80px; }
+        #result { flex: 1; min-height: 40px; background: #f9f9f9; }
         .buttons { display: flex; gap: 8px; }
         button {
             flex: 1;
@@ -47,6 +47,8 @@
         #insertBtn { background: #27ae60; color: white; }
         #insertBtn:hover { background: #1e8449; }
         #insertBtn:disabled { background: #aaa; cursor: default; }
+        #generateInsertBtn { background: #8e44ad; color: white; }
+        #generateInsertBtn:hover { background: #7d3c98; }
         #status { font-size: 12px; color: #888; min-height: 16px; }
     </style>
 </head>
@@ -55,13 +57,14 @@
 <label>Template</label>
 <textarea id="template" placeholder="a {red|blue|green} {cat|dog} on a {sunny|rainy} day"></textarea>
 
+<label>Result</label>
+<textarea id="result" readonly placeholder="Generated prompt will appear here..."></textarea>
+
 <div class="buttons">
     <button id="generateBtn">Generate</button>
     <button id="insertBtn" disabled>Insert into page</button>
+    <button id="generateInsertBtn">Generate &amp; Insert</button>
 </div>
-
-<label>Result</label>
-<textarea id="result" readonly placeholder="Generated prompt will appear here..."></textarea>
 
 <div id="status"></div>
 
