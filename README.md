@@ -1,6 +1,8 @@
+<img src="icon.png" width="64" align="left" style="margin-right: 16px">
+
 # Dynamic Prompts (Chrome extension)
 
-Chrome extension that lets you write prompt templates with `{A|B|C}` syntax, generate random realizations, and insert them directly into AI tools.
+Chrome extension that lets you write prompt templates with `{A|B|C}` variant syntax, generate random prompts, and insert them directly into online AI tools.
 
 Inspired by [adieyal/dynamicprompts](https://github.com/adieyal/dynamicprompts) (Python), reimplemented in JavaScript.
 
@@ -15,7 +17,7 @@ Possible results: `a blue cat on a sunny day`, `a red dog on a rainy day`, …
 
 Nesting is supported: `{bright {red|orange}|dark {blue|purple}}` works as expected.
 
-## Supported sites
+## Supported online **AI tools**
 
 | Site | URL |
 |------|------|
