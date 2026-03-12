@@ -51,6 +51,10 @@
         #generateInsertBtn:hover { background: #7d3c98; }
         #status { font-size: 12px; color: #888; min-height: 16px; }
         .options { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #555; }
+        .folder-row { display: flex; align-items: center; gap: 6px; }
+        #folderBtn { flex: none; padding: 4px 8px; font-size: 12px; font-weight: normal; background: #eee; color: #333; border: 1px solid #ccc; }
+        #folderBtn:hover { background: #ddd; }
+        #folderName { font-size: 11px; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -60,6 +64,11 @@
 
 <label>Result</label>
 <textarea id="result" readonly placeholder="Generated prompt will appear here..."></textarea>
+
+<div class="folder-row">
+    <button id="folderBtn">📁 Wildcards folder</button>
+    <span id="folderName">not set</span>
+</div>
 
 <div class="options">
     <input type="checkbox" id="oneLineChk" checked>
