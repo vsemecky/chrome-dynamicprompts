@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            gap: 8px;
+        }
+        label {
+            font-weight: bold;
+            font-size: 12px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        textarea {
+            width: 100%;
+            resize: vertical;
+            font-family: monospace;
+            font-size: 13px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 6px;
+        }
+        #template { flex: 1; min-height: 120px; }
+        #result { height: 80px; background: #f9f9f9; }
+        .buttons { display: flex; gap: 8px; }
+        button {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        #generateBtn { background: #4a90e2; color: white; }
+        #generateBtn:hover { background: #357abd; }
+        #insertBtn { background: #27ae60; color: white; }
+        #insertBtn:hover { background: #1e8449; }
+        #insertBtn:disabled { background: #aaa; cursor: default; }
+        #status { font-size: 12px; color: #888; min-height: 16px; }
+    </style>
+</head>
+<body>
+
+<label>Template</label>
+<textarea id="template" placeholder="a {red|blue|green} {cat|dog} on a {sunny|rainy} day"></textarea>
+
+<div class="buttons">
+    <button id="generateBtn">Generate</button>
+    <button id="insertBtn" disabled>Insert into page</button>
+</div>
+
+<label>Result</label>
+<textarea id="result" readonly placeholder="Generated prompt will appear here..."></textarea>
+
+<div id="status"></div>
+
+<script src="parser.js"></script>
+<script src="sidepanel.js"></script>
+</body>
+</html>
