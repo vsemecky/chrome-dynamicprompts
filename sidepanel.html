@@ -50,6 +50,7 @@
         #generateInsertBtn { background: #8e44ad; color: white; }
         #generateInsertBtn:hover { background: #7d3c98; }
         #status { font-size: 12px; color: #888; min-height: 16px; }
+        .options { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #555; }
     </style>
 </head>
 <body>
@@ -59,6 +60,11 @@
 
 <label>Result</label>
 <textarea id="result" readonly placeholder="Generated prompt will appear here..."></textarea>
+
+<div class="options">
+    <input type="checkbox" id="oneLineChk" checked>
+    <label for="oneLineChk" style="text-transform:none; letter-spacing:normal; font-weight:normal;">One line</label>
+</div>
 
 <div class="buttons">
     <button id="generateBtn">Generate</button>

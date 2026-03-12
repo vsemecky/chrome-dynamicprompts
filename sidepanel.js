@@ -3,7 +3,13 @@ const resultEl = document.getElementById('result');
 const generateBtn = document.getElementById('generateBtn');
 const insertBtn = document.getElementById('insertBtn');
 const generateInsertBtn = document.getElementById('generateInsertBtn');
+const oneLineChk = document.getElementById('oneLineChk');
 const statusEl = document.getElementById('status');
+
+function postProcess(text) {
+    if (!oneLineChk.checked) return text;
+    return text.split('\n').map(l => l.trim()).filter(l => l).join(' ');
+}
 
 // Persist template across sessions
 templateEl.value = localStorage.getItem('dp_template') || '';
@@ -14,7 +20,7 @@ templateEl.addEventListener('input', () => {
 generateBtn.addEventListener('click', () => {
     const template = templateEl.value.trim();
     if (!template) return;
-    const result = generate(template);
+    const result = postProcess(generate(template));
     resultEl.value = result;
     insertBtn.disabled = false;
     setStatus('');
@@ -41,7 +47,7 @@ insertBtn.addEventListener('click', () => {
 generateInsertBtn.addEventListener('click', () => {
     const template = templateEl.value.trim();
     if (!template) return;
-    const text = generate(template);
+    const text = postProcess(generate(template));
     resultEl.value = text;
     insertBtn.disabled = false;
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
