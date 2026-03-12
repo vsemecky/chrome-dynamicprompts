@@ -46,5 +46,10 @@ User types template → clicks Generate → `parser.js` resolves `{A|B|C}` → r
 ## Key Notes
 
 - `parser.js` must be loaded before `sidepanel.js` in `sidepanel.html` (no modules)
-- Grok Imagine uses TipTap — inserting via `execCommand` is required; setting `.textContent` directly does not trigger React state updates
+- Grok Imagine uses TipTap — inserting via `execCommand` is required; setting `.textContent` directly does not trigger React state updates. `execCommand` is deprecated but intentionally used here — it's the only approach TipTap picks up correctly
 - Template is saved to `localStorage` under key `dp_template`
+
+## Committing to Git
+- Use commit messages in the same style as those in the Git history
+- Use brief, clear, one line commit messages in English
+- Commit messages should be approved manually
