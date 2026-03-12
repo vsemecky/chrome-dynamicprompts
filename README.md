@@ -1,4 +1,4 @@
-# Dynamic Prompts
+# Dynamic Prompts (Chrome extension)
 
 Chrome extension that lets you write prompt templates with `{A|B|C}` syntax, generate random realizations, and insert them directly into AI tools.
 
@@ -18,8 +18,9 @@ Nesting is supported: `{bright {red|orange}|dark {blue|purple}}` works as expect
 ## Supported sites
 
 | Site | URL |
-|------|-----|
-| Grok Imagine | `https://grok.com/imagine` |
+|------|------|
+| Grok Imagine | https://grok.com/imagine |
+
 
 ## Installation
 
