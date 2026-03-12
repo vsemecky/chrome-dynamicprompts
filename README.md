@@ -17,6 +17,11 @@ Possible results: `a blue cat on a sunny day`, `a red dog on a rainy day`, …
 
 Nesting is supported: `{bright {red|orange}|dark {blue|purple}}` works as expected.
 
+Wildcards are also supported — create a `.txt` file with one value per line and reference it as `__filename__`:
+```
+a __color__ __animal__ on a {sunny|rainy} day
+```
+
 ## Supported online **AI tools**
 
 | Site | URL |
@@ -35,5 +40,6 @@ Nesting is supported: `{bright {red|orange}|dark {blue|purple}}` works as expect
 
 1. Open the extension side panel by clicking the toolbar icon
 2. Type a template into the **Template** field
-3. Click **Generate** to see a random realization, or **Generate & Insert** to generate and insert in one step
-4. Click **Insert into page** to insert the generated prompt into the active tab
+3. Optionally select a **Wildcards folder** containing `.txt` files for `__wildcard__` syntax
+4. Click **Generate** to see a random prompt, or **Generate & Insert** to generate and insert in one step
+5. Click **Insert into page** to insert the generated prompt into the active tab
