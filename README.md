@@ -17,7 +17,26 @@ Possible results: `a blue cat on a sunny day`, `a red dog on a rainy day`, …
 
 Nesting is supported: `{bright {red|orange}|dark {blue|purple}}` works as expected.
 
-Wildcards are also supported — create a `.txt` file with one value per line and reference it as `__filename__`:
+### Multiple values
+
+Pick multiple values at once with `{N$$...}` or a range `{N-M$$...}`:
+
+```
+{2$$red|green|blue}          → "red, green"
+{1-3$$red|green|blue}        → 1, 2, or 3 colours joined with ", "
+{1-3$$ and $$red|green|blue} → joined with " and " instead
+```
+
+Omitting a bound defaults to 1 (lower) or all options (upper):
+```
+{-2$$red|green|blue}   == {1-2$$red|green|blue}
+{1-$$red|green|blue}   == {1-3$$red|green|blue}
+```
+
+### Wildcards
+
+Create a `.txt` file with one value per line and reference it as `__filename__`. Wildcard files can themselves contain `{A|B|C}` or `__other_wildcard__` syntax.
+
 ```
 a __color__ __animal__ on a {sunny|rainy} day
 ```
