@@ -45,9 +45,9 @@ async function initDirHandle() {
     try {
         const handle = await dbGet('wildcardDir');
         if (!handle) return;
+        dirHandle = handle;
         const perm = await handle.queryPermission({ mode: 'read' });
         if (perm === 'granted') {
-            dirHandle = handle;
             folderNameEl.textContent = handle.name;
         } else {
             folderNameEl.textContent = `${handle.name} (click to re-authorize)`;
@@ -59,6 +59,13 @@ async function initDirHandle() {
 
 folderBtn.addEventListener('click', async () => {
     try {
+        if (dirHandle) {
+            const perm = await dirHandle.requestPermission({ mode: 'read' });
+            if (perm === 'granted') {
+                folderNameEl.textContent = dirHandle.name;
+                return;
+            }
+        }
         const handle = await window.showDirectoryPicker({ mode: 'read' });
         dirHandle = handle;
         folderNameEl.textContent = handle.name;
@@ -68,27 +75,19 @@ folderBtn.addEventListener('click', async () => {
     }
 });
 
-function extractWildcardNames(template) {
-    const names = new Set();
-    for (const match of template.matchAll(/__([a-zA-Z0-9_-]+?)__/g)) {
-        names.add(match[1].toLowerCase());
-    }
-    return names;
-}
-
-async function loadWildcards(template) {
+async function loadWildcards() {
     if (!dirHandle) return {};
-    const names = extractWildcardNames(template);
     const wildcards = {};
-    for (const name of names) {
-        try {
-            const fileHandle = await dirHandle.getFileHandle(`${name}.txt`);
-            const file = await fileHandle.getFile();
+    try {
+        for await (const entry of dirHandle.values()) {
+            if (entry.kind !== 'file' || !entry.name.endsWith('.txt')) continue;
+            const name = entry.name.slice(0, -4).toLowerCase();
+            const file = await entry.getFile();
             const text = await file.text();
             wildcards[name] = text.split('\n').map(l => l.trim()).filter(l => l);
-        } catch {
-            // file not found, skip
         }
+    } catch {
+        setStatus('⚠️ Wildcard folder access lost — click 📁 to re-authorize.');
     }
     return wildcards;
 }
@@ -122,7 +121,7 @@ templateEl.addEventListener('input', () => {
 generateBtn.addEventListener('click', async () => {
     const template = templateEl.value.trim();
     if (!template) return;
-    const wildcards = await loadWildcards(template);
+    const wildcards = await loadWildcards();
     const result = postProcess(generate(template, wildcards));
     resultEl.value = result;
     insertBtn.disabled = false;
@@ -138,7 +137,7 @@ insertBtn.addEventListener('click', () => {
 generateInsertBtn.addEventListener('click', async () => {
     const template = templateEl.value.trim();
     if (!template) return;
-    const wildcards = await loadWildcards(template);
+    const wildcards = await loadWildcards();
     const text = postProcess(generate(template, wildcards));
     resultEl.value = text;
     insertBtn.disabled = false;
