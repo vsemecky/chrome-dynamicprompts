@@ -60,4 +60,6 @@ User types template → clicks Generate → `sidepanel.js` loads wildcard `.txt`
 ## Committing to Git
 - Use commit messages in the same style as those in the Git history
 - Use brief, clear, one line commit messages in English
+- Commit changes in logical chunks that are related to each other.
+- Split unrelated changes into multiple commits.
 - Commit messages should be approved manually
