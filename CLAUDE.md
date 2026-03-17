@@ -30,9 +30,10 @@ No tests, no linter, no package manager.
 - `{N$$sep$$A|B|C}` — custom separator
 - `__wildcard__` — random line from wildcards map
 
-**`content.js`** — Injected only on `https://grok.com/imagine*`. Listens for `insertPrompt` message and inserts text into the TipTap/ProseMirror editor (`.ProseMirror` contenteditable div) using `execCommand('selectAll')` + `execCommand('insertText')`.
+**`content.js`** — Injected on supported sites. Listens for `insertPrompt` message and inserts text into the page editor. Tries editors in order: `.ProseMirror` (TipTap) → `textarea` → `[contenteditable="true"]`. All insertion uses `execCommand('selectAll')` + `execCommand('insertText')`.
 
 **`sidepanel.html` + `sidepanel.js`** — UI with:
+- AI services bar (favicon links to supported sites)
 - Template textarea (persisted to `localStorage`)
 - Wildcards folder picker (handle persisted to IndexedDB via File System Access API)
 - Generate button → loads wildcards, calls `generate()` from `parser.js`
@@ -48,11 +49,12 @@ User types template → clicks Generate → `sidepanel.js` loads wildcard `.txt`
 | Site | URL pattern | Editor type |
 |------|-------------|-------------|
 | Grok Imagine | `https://grok.com/imagine*` | TipTap/ProseMirror (`.ProseMirror`) |
+| Kling AI | `https://app.klingai.com/*` | `textarea` |
 
 ## Key Notes
 
 - `parser.js` must be loaded before `sidepanel.js` in `sidepanel.html` (no modules)
-- Grok Imagine uses TipTap — inserting via `execCommand` is required; setting `.textContent` directly does not trigger React state updates. `execCommand` is deprecated but intentionally used here — it's the only approach TipTap picks up correctly
+- `execCommand` is deprecated but intentionally used — it's the only approach TipTap (Grok) picks up correctly, and it also works for plain `textarea` elements (e.g. Kling AI)
 - Template is saved to `localStorage` under key `dp_template`
 - Wildcard folder handle is persisted in IndexedDB (db `dynamicprompts`, store `kv`, key `wildcardDir`) using the File System Access API — all `.txt` files in the folder are loaded on each generate (supports transitive wildcard references)
 - On sidebar open, `initDirHandle` always restores `dirHandle` regardless of permission state; permission is requested lazily on folder button click (to allow re-authorization without picking a new folder)

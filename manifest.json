@@ -16,9 +16,9 @@
     "content_scripts": [
         {
             "js": ["content.js"],
-            "matches": ["https://grok.com/imagine*"]
+            "matches": ["https://grok.com/imagine*", "https://app.klingai.com/*"]
         }
     ],
     "permissions": ["sidePanel", "tabs", "activeTab"],
-    "host_permissions": ["https://grok.com/*"]
+    "host_permissions": ["https://grok.com/*", "https://app.klingai.com/*"]
 }

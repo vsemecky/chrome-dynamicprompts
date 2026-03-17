@@ -52,12 +52,26 @@
         #status { font-size: 12px; color: #888; min-height: 16px; }
         .options { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #555; }
         .folder-row { display: flex; align-items: center; gap: 6px; }
+        .sites { display: flex; gap: 8px; align-items: center; }
+        .sites a { display: flex; opacity: 0.5; transition: opacity 0.15s; }
+        .sites a:hover { opacity: 1; }
+        .sites img { width: 32px; height: 32px; border-radius: 6px; }
         #folderBtn { flex: none; padding: 4px 8px; font-size: 12px; font-weight: normal; background: #eee; color: #333; border: 1px solid #ccc; }
         #folderBtn:hover { background: #ddd; }
         #folderName { font-size: 11px; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     </style>
 </head>
 <body>
+
+<label>AI services</label>
+<div class="sites">
+    <a href="https://grok.com/imagine" title="Grok Imagine" target="_blank">
+        <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fgrok.com%2F&size=64" alt="Grok">
+    </a>
+    <a href="https://app.klingai.com/global/video/new?ac=1" title="Kling AI" target="_blank">
+        <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fapp.klingai.com%2F&size=64" alt="Kling AI">
+    </a>
+</div>
 
 <label>Template</label>
 <textarea id="template" placeholder="a {red|blue|green} {cat|dog} on a {sunny|rainy} day"></textarea>

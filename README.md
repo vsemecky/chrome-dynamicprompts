@@ -46,6 +46,7 @@ a __color__ __animal__ on a {sunny|rainy} day
 | Site | URL |
 |------|------|
 | Grok Imagine | https://grok.com/imagine |
+| Kling AI | https://app.klingai.com/global/video/new?ac=1 |
 
 
 ## Installation
