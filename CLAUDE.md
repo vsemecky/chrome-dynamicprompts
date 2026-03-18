@@ -51,10 +51,10 @@ User types template → clicks Generate → `sidepanel.js` loads wildcard `.txt`
 | Grok Imagine | `https://grok.com/imagine*` | TipTap/ProseMirror (`.ProseMirror`) |
 | Kling AI | `https://app.klingai.com/*` | `textarea` |
 | Sora | `https://sora.chatgpt.com/*` | `textarea` |
-| Vidu | `https://www.vidu.com/create/*` | ? |
-| Veed | `https://www.veed.io/*` | ? |
-| Artlist Toolkit | `https://toolkit.artlist.io/*` | ? |
-| Deevid | `https://deevid.ai/*` | ? |
+| Vidu | `https://www.vidu.com/create/*` | `textarea` or `contenteditable` (fallback) |
+| Veed | `https://www.veed.io/*` | `textarea` or `contenteditable` (fallback) |
+| Artlist Toolkit | `https://toolkit.artlist.io/*` | `textarea` or `contenteditable` (fallback) |
+| Deevid | `https://deevid.ai/*` | `textarea` or `contenteditable` (fallback) |
 
 ## Key Notes
 
