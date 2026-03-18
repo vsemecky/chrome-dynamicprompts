@@ -48,6 +48,10 @@ a __color__ __animal__ on a {sunny|rainy} day
 | Grok Imagine | https://grok.com/imagine |
 | Kling AI | https://app.klingai.com/global/video/new?ac=1 |
 | Sora | https://sora.chatgpt.com/ |
+| Vidu | https://www.vidu.com/create/ |
+| Veed | https://www.veed.io/ |
+| Artlist Toolkit | https://toolkit.artlist.io/ |
+| Deevid | https://deevid.ai/ |
 
 
 ## Installation
