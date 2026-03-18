@@ -50,6 +50,7 @@ User types template → clicks Generate → `sidepanel.js` loads wildcard `.txt`
 |------|-------------|-------------|
 | Grok Imagine | `https://grok.com/imagine*` | TipTap/ProseMirror (`.ProseMirror`) |
 | Kling AI | `https://app.klingai.com/*` | `textarea` |
+| Sora | `https://sora.chatgpt.com/*` | `textarea` |
 
 ## Key Notes
 
