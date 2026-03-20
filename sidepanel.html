@@ -61,6 +61,10 @@
         .sites a { display: flex; opacity: 0.5; transition: opacity 0.15s; }
         .sites a:hover, .sites a.active { opacity: 1; animation: pop 0.25s ease-out; }
         .sites img { width: 32px; height: 32px; border-radius: 6px; }
+        .sites-more { width: 32px; height: 32px; border-radius: 6px; background: #eee; align-items: center; justify-content: center; font-size: 18px; color: #888; text-decoration: none; letter-spacing: -2px; }
+        .label-row { display: flex; justify-content: space-between; align-items: center; }
+        .copyBtn { flex: none; padding: 2px 4px; background: none; color: #aaa; border: none; cursor: pointer; display: flex; align-items: center; }
+        .copyBtn:hover { color: #555; }
         #folderBtn { flex: none; padding: 4px 8px; font-size: 12px; font-weight: normal; background: #eee; color: #333; border: 1px solid #ccc; }
         #folderBtn:hover { background: #ddd; }
         #folderName { font-size: 11px; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -91,12 +95,13 @@
     <a href="https://deevid.ai/" title="Deevid" target="_blank">
         <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fdeevid.ai%2F&size=64" alt="Deevid">
     </a>
+    <a href="https://freshfolder.com/search?q=ai+video+generator" title="More AI services" target="_blank" class="sites-more">···</a>
 </div>
 
-<label>Template</label>
+<div class="label-row"><label>Template</label><button class="copyBtn" data-target="template" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
 <textarea id="template" placeholder="a {red|blue|green} {cat|dog} on a {sunny|rainy} day"></textarea>
 
-<label>Result</label>
+<div class="label-row"><label>Result</label><button class="copyBtn" data-target="result" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
 <textarea id="result" readonly placeholder="Generated prompt will appear here..."></textarea>
 
 <div class="folder-row">

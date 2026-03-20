@@ -115,6 +115,15 @@ function sendInsert(text) {
     });
 }
 
+// Copy buttons
+document.querySelectorAll('.copyBtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const text = document.getElementById(btn.dataset.target).value;
+        if (!text) return;
+        navigator.clipboard.writeText(text);
+    });
+});
+
 // Persist template across sessions
 templateEl.value = localStorage.getItem('dp_template') || '';
 templateEl.addEventListener('input', () => {

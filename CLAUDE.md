@@ -33,11 +33,11 @@ No tests, no linter, no package manager.
 **`content.js`** — Injected on supported sites. Listens for `insertPrompt` message and inserts text into the page editor. Tries editors in order: `.ProseMirror` (TipTap) → `textarea` → `[contenteditable="true"]`. All insertion uses `execCommand('selectAll')` + `execCommand('insertText')`.
 
 **`sidepanel.html` + `sidepanel.js`** — UI with:
-- AI services bar (favicon links to supported sites)
-- Template textarea (persisted to `localStorage`)
+- AI services bar (favicon links to supported sites; active site highlighted; `...` link to a discovery page at the end)
+- Template textarea (persisted to `localStorage`) with copy-to-clipboard button
 - Wildcards folder picker (handle persisted to IndexedDB via File System Access API)
 - Generate button → loads wildcards, calls `generate()` from `parser.js`
-- Result textarea (read-only)
+- Result textarea (read-only) with copy-to-clipboard button
 - Insert button → `chrome.tabs.sendMessage` with `{ action: 'insertPrompt', text }`
 
 ## Data Flow
