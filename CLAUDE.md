@@ -64,9 +64,12 @@ User types template → clicks Generate → `sidepanel.js` loads wildcard `.txt`
 - Wildcard folder handle is persisted in IndexedDB (db `dynamicprompts`, store `kv`, key `wildcardDir`) using the File System Access API — all `.txt` files in the folder are loaded on each generate (supports transitive wildcard references)
 - On sidebar open, `initDirHandle` always restores `dirHandle` regardless of permission state; permission is requested lazily on folder button click (to allow re-authorization without picking a new folder)
 
+## Roadmap
+
+`TODO.md` contains the owner's ideas and planned improvements. Read it to understand where the project is heading — use it to inform suggestions and spot opportunities to address planned work alongside current tasks.
+
 ## Committing to Git
 - Use commit messages in the same style as those in the Git history
 - Use brief, clear, one line commit messages in English
 - Commit changes in logical chunks that are related to each other.
 - Split unrelated changes into multiple commits.
-- Commit messages should be approved manually
