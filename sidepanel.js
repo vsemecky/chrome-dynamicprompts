@@ -60,10 +60,13 @@ async function initDirHandle() {
 folderBtn.addEventListener('click', async () => {
     try {
         if (dirHandle) {
-            const perm = await dirHandle.requestPermission({ mode: 'read' });
-            if (perm === 'granted') {
-                folderNameEl.textContent = dirHandle.name;
-                return;
+            const perm = await dirHandle.queryPermission({ mode: 'read' });
+            if (perm !== 'granted') {
+                const result = await dirHandle.requestPermission({ mode: 'read' });
+                if (result === 'granted') {
+                    folderNameEl.textContent = dirHandle.name;
+                    return;
+                }
             }
         }
         const handle = await window.showDirectoryPicker({ mode: 'read' });
@@ -148,4 +151,23 @@ function setStatus(msg) {
     statusEl.textContent = msg;
 }
 
+function highlightActiveSite() {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        document.querySelectorAll('.sites a').forEach(a => a.classList.remove('active'));
+        if (!tabs[0]?.url) return;
+        try {
+            const tabHost = new URL(tabs[0].url).hostname;
+            document.querySelectorAll('.sites a').forEach(a => {
+                if (new URL(a.href).hostname === tabHost) a.classList.add('active');
+            });
+        } catch {}
+    });
+}
+
+chrome.tabs.onActivated.addListener(highlightActiveSite);
+chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+    if (changeInfo.url) highlightActiveSite();
+});
+
 initDirHandle();
+highlightActiveSite();
